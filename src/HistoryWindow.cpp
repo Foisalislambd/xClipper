@@ -5,6 +5,7 @@
 #include <QStyle>
 #include <QCursor>
 #include <QFocusEvent>
+#include <QKeyEvent>
 #include <QRegularExpression>
 #include <QStyledItemDelegate>
 #include <QPainter>
@@ -190,6 +191,13 @@ void HistoryWindow::setupUI() {
         // Also need to clear backend history via signal or method if fully implemented
     });
     headerLayout->addWidget(clearButton);
+
+    QPushButton *closeButton = new QPushButton("✕", container);
+    closeButton->setCursor(Qt::PointingHandCursor);
+    closeButton->setFixedSize(24, 24);
+    closeButton->setToolTip("Close");
+    connect(closeButton, &QPushButton::clicked, this, &HistoryWindow::hide);
+    headerLayout->addWidget(closeButton);
     
     containerLayout->addLayout(headerLayout);
 
@@ -320,4 +328,12 @@ void HistoryWindow::toggleVisibility() {
 void HistoryWindow::focusOutEvent(QFocusEvent *event) {
     Q_UNUSED(event);
     hide();
+}
+
+void HistoryWindow::keyPressEvent(QKeyEvent *event) {
+    if (event->key() == Qt::Key_Escape) {
+        hide();
+    } else {
+        QWidget::keyPressEvent(event);
+    }
 }
