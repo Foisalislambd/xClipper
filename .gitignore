@@ -3,6 +3,8 @@
 
 # Build directories
 build/
+release/
+AppDir/
 cmake-build-*/
 bin/
 lib/

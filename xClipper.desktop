@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=xClipper
+Comment=Clipboard History Manager by Foisal Islam
+Exec=xClipper
+Icon=xClipper
+Categories=Utility;
+Terminal=false
