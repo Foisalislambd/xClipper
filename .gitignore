@@ -1,0 +1,36 @@
+# Environments
+.env
+
+# Build directories
+build/
+cmake-build-*/
+bin/
+lib/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cbp
+
+# Qt
+*.moc
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+.qmake.stash
+*.qmlc
+*.jsc
+*.pro.user
+*.pro.user.*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# Executable
+xClipper
