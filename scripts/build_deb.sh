@@ -13,12 +13,15 @@ DEB_NAME="${PKG_NAME}_${VERSION}_${ARCH}"
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 BUILD_DIR="$PROJECT_ROOT/build"
-RELEASE_DIR="$PROJECT_ROOT/release"
+RELEASE_DIR="$PROJECT_ROOT/release/Deb"
 DEB_DIR="$RELEASE_DIR/$DEB_NAME"
 
 echo "🚀 Starting .deb build for $APP_NAME..."
 
 # 1. Clean and Prepare Directories
+# We don't wipe RELEASE_DIR here to keep other debs if needed, or we can. 
+# Let's just clean the specific DEB_DIR as before, but ensure parent exists.
+mkdir -p "$RELEASE_DIR"
 rm -rf "$DEB_DIR"
 mkdir -p "$DEB_DIR/usr/bin"
 mkdir -p "$DEB_DIR/usr/share/applications"

@@ -11,9 +11,9 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 BUILD_DIR="$PROJECT_ROOT/build"
 APP_DIR="$PROJECT_ROOT/AppDir"
-RELEASE_DIR="$PROJECT_ROOT/release"
+RELEASE_DIR="$PROJECT_ROOT/release/AppImage"
 
-# Clean up previous builds
+# Clean up previous builds (Only for AppImage)
 rm -rf "$APP_DIR" "$RELEASE_DIR"
 mkdir -p "$APP_DIR" "$RELEASE_DIR"
 
@@ -35,7 +35,7 @@ mkdir -p "$APP_DIR/usr/share/icons/hicolor/256x256/apps"
 echo "COPYing binary and assets..."
 cp "$BUILD_DIR/xClipper" "$APP_DIR/usr/bin/"
 cp "$PROJECT_ROOT/xClipper.desktop" "$APP_DIR/usr/share/applications/"
-cp "$PROJECT_ROOT/icon.png" "$APP_DIR/usr/share/icons/hicolor/256x256/apps/xClipper.png"
+cp "$PROJECT_ROOT/assets/icon.png" "$APP_DIR/usr/share/icons/hicolor/256x256/apps/xClipper.png"
 
 # 4. Download LinuxDeploy and Qt Plugin
 echo "⬇️  Downloading LinuxDeploy tools..."
