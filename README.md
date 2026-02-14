@@ -1,63 +1,83 @@
-# xClipper - Linux Clipboard History
+# xClipper
 
-A simple, human-friendly clipboard history manager for Linux, built with C++ and Qt.
+### A Project by **MD Foisal Islam**
 
-## Features
-- **Clipboard Monitoring**: Automatically records copied text.
-- **History**: Stores the last 20 items.
-- **Tray Icon**: Runs in the background with a system tray icon.
-- **Quick Paste**: Click an item in the history list to copy it back to the clipboard.
+**xClipper** is a lightweight, modern clipboard history manager designed for Linux. It runs quietly in the background, keeping track of your copied text so you never lose an important snippet again.
 
-## Prerequisites
+---
 
-You need a C++ compiler, CMake, and Qt development libraries.
+## 📖 User Guide
 
-### Ubuntu / Debian
+### How it Works
+1.  **Copy as usual**: Whenever you press `Ctrl+C` or copy text from any application, xClipper saves it.
+2.  **Access History**: Click the **Tray Icon** (computer icon) in your system bar to open the history window.
+3.  **Paste**: Click on any item in the list to copy it back to your clipboard. You can then paste it (`Ctrl+V`) anywhere.
+4.  **Clear**: Use the "Clear all" button to wipe your history.
+
+### Features
+*   **Automatic Tracking**: Instantly saves copied text.
+*   **Modern UI**: Dark mode interface inspired by modern design standards.
+*   **Tray Integration**: Stays out of your way until you need it.
+*   **Privacy Focused**: Runs locally on your machine.
+*   **Smart History**: Removes duplicates and keeps the most recent items at the top (stores up to 20 items).
+
+---
+
+## 🛠️ Installation & Setup
+
+Follow these simple steps to get xClipper running on your Linux machine.
+
+### 1. Install Requirements
+You need a C++ compiler and Qt libraries. Open your terminal and run the command for your OS:
+
+**Ubuntu / Debian / Linux Mint:**
 ```bash
 sudo apt update
 sudo apt install build-essential cmake qt6-base-dev
-# OR for Qt5
-# sudo apt install build-essential cmake qtbase5-dev
 ```
+*(If you prefer Qt5, you can install `qtbase5-dev` instead)*
 
-### Fedora
+**Fedora:**
 ```bash
 sudo dnf install gcc-c++ cmake qt6-qtbase-devel
 ```
 
-### Arch Linux
+**Arch Linux:**
 ```bash
 sudo pacman -S base-devel cmake qt6-base
 ```
 
-## Build & Run
+### 2. Build the Project
+Open a terminal in the project folder and run:
 
-1.  Create a build directory:
-    ```bash
-    mkdir build
-    cd build
-    ```
+```bash
+# Create a build folder
+mkdir build
+cd build
 
-2.  Configure with CMake:
-    ```bash
-    cmake ..
-    ```
+# Configure the project
+cmake ..
 
-3.  Build:
-    ```bash
-    make
-    ```
+# Compile
+make -j$(nproc)
+```
 
-4.  Run:
-    ```bash
-    ./xClipper
-    ```
+### 3. Run xClipper
+Once built, you can start the app directly:
 
-## Usage
+```bash
+./xClipper
+```
 
--   The application runs in the background. Look for the computer icon in your system tray.
--   Click the tray icon to toggle the history window.
--   Click any item in the list to copy it to your clipboard.
--   The window hides automatically when you click outside of it.
+*Tip: You can add this command to your "Startup Applications" to have xClipper start automatically when you log in.*
 
+---
 
+## ❓ Troubleshooting
+
+*   **"I don't see the icon!"**: Check your system tray area. On some desktop environments (like GNOME), you might need an extension like "AppIndicator" to see tray icons.
+*   **Window closes too fast**: The window is designed to close when you click outside of it or switch windows. This is normal behavior for a popup tool.
+
+---
+
+**Developed with ❤️ by Foisal Islam**
