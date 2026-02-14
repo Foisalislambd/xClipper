@@ -10,6 +10,12 @@
 #include <QStyledItemDelegate>
 #include <QPainter>
 #include <QPainterPath>
+#include <QStyleOptionViewItem>
+#include <QRect>
+#include <QColor>
+#include <QPen>
+#include <QBrush>
+#include <QFont>
 #include <QTextOption>
 #include <QPushButton>
 
@@ -321,7 +327,6 @@ void HistoryWindow::toggleVisibility() {
         move(x, y);
         show();
         activateWindow();
-        searchBox->setFocus();
     }
 }
 

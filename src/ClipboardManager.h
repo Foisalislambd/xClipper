@@ -25,7 +25,6 @@ private:
     QClipboard *clipboard;
     QList<QString> history;
     const int MAX_HISTORY = 20;
-    bool isSelfUpdate = false; // Flag to ignore updates triggered by ourselves
 };
 
 #endif // CLIPBOARDMANAGER_H
