@@ -312,7 +312,10 @@ void HistoryWindow::onItemClicked(QListWidgetItem *item) {
 
 void HistoryWindow::toggleVisibility() {
     if (isVisible()) {
-        hide();
+        // Window already open – bring it to front (sobok window er upore) instead of hiding
+        show();
+        raise();
+        activateWindow();
     } else {
         QPoint cursor = QCursor::pos();
         QRect screenGeo = QGuiApplication::screenAt(cursor)->geometry();
