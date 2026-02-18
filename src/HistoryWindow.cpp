@@ -1,11 +1,13 @@
 #include "HistoryWindow.h"
 #include <QApplication>
+#include <QWindow>
 #include <QScreen>
 #include <QGuiApplication>
 #include <QStyle>
 #include <QCursor>
 #include <QFocusEvent>
 #include <QKeyEvent>
+#include <QMouseEvent>
 #include <QRegularExpression>
 #include <QStyledItemDelegate>
 #include <QPainter>
@@ -182,14 +184,17 @@ void HistoryWindow::setupUI() {
     containerLayout->setContentsMargins(10, 15, 10, 10);
     containerLayout->setSpacing(10);
 
-    // Header Row (Clipboard Label + Clear All)
-    QHBoxLayout *headerLayout = new QHBoxLayout();
-    headerLabel = new QLabel("Clipboard", container);
+    // Header Row (Clipboard Label + Clear All) - draggable
+    headerBar = new QWidget(container);
+    headerBar->setCursor(Qt::OpenHandCursor);
+    QHBoxLayout *headerLayout = new QHBoxLayout(headerBar);
+    headerLayout->setContentsMargins(0, 0, 0, 0);
+    headerLabel = new QLabel("Clipboard", headerBar);
     headerLayout->addWidget(headerLabel);
     
     headerLayout->addStretch();
     
-    QPushButton *clearButton = new QPushButton("Clear all", container);
+    QPushButton *clearButton = new QPushButton("Clear all", headerBar);
     clearButton->setCursor(Qt::PointingHandCursor);
     connect(clearButton, &QPushButton::clicked, [this](){
         currentHistory.clear();
@@ -198,14 +203,17 @@ void HistoryWindow::setupUI() {
     });
     headerLayout->addWidget(clearButton);
 
-    QPushButton *closeButton = new QPushButton("✕", container);
+    QPushButton *closeButton = new QPushButton("✕", headerBar);
     closeButton->setCursor(Qt::PointingHandCursor);
     closeButton->setFixedSize(24, 24);
     closeButton->setToolTip("Close");
     connect(closeButton, &QPushButton::clicked, this, &HistoryWindow::hide);
     headerLayout->addWidget(closeButton);
+
+    headerBar->installEventFilter(this);
+    headerLabel->installEventFilter(this);
     
-    containerLayout->addLayout(headerLayout);
+    containerLayout->addWidget(headerBar);
 
     // Optional Search (Kept small/subtle or could remove if user insisted "top section badh" means everything)
     // User said "tob er section ta lagbe na" referring to the emojis tabs in the image.
@@ -345,3 +353,15 @@ void HistoryWindow::keyPressEvent(QKeyEvent *event) {
         QWidget::keyPressEvent(event);
     }
 }
+
+bool HistoryWindow::eventFilter(QObject *watched, QEvent *event) {
+    // Start system move when pressing on header (uses native WM - works on X11/Wayland)
+    if ((watched == headerBar || watched == headerLabel) && event->type() == QEvent::MouseButtonPress) {
+        QMouseEvent *me = static_cast<QMouseEvent*>(event);
+        if (me->button() == Qt::LeftButton && windowHandle()) {
+            windowHandle()->startSystemMove();
+        }
+    }
+    return QWidget::eventFilter(watched, event);
+}
+

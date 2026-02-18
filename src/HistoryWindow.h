@@ -23,6 +23,7 @@ signals:
 protected:
     void focusOutEvent(QFocusEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
 private slots:
     void onItemClicked(QListWidgetItem *item);
@@ -34,6 +35,7 @@ private:
     QLineEdit *searchBox;
     QSystemTrayIcon *trayIcon;
     QMenu *trayMenu;
+    QWidget *headerBar;
     QLabel *headerLabel;
     QList<QString> currentHistory;
     
