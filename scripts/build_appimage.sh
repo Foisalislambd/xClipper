@@ -3,7 +3,7 @@
 # Exit on error
 set -e
 
-echo "🚀 Starting xClipper AppImage Build..."
+echo "🚀 Starting LixClipper AppImage Build..."
 
 # Define directories
 # Get the directory where this script is located, then go up one level to find the project root
@@ -18,7 +18,7 @@ rm -rf "$APP_DIR" "$RELEASE_DIR"
 mkdir -p "$APP_DIR" "$RELEASE_DIR"
 
 # 1. Build the Application
-echo "🛠️  Compiling xClipper..."
+echo "🛠️  Compiling LixClipper..."
 mkdir -p "$BUILD_DIR"
 cd "$BUILD_DIR"
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr
@@ -33,9 +33,9 @@ mkdir -p "$APP_DIR/usr/share/icons/hicolor/256x256/apps"
 
 # 3. Copy Files
 echo "COPYing binary and assets..."
-cp "$BUILD_DIR/xClipper" "$APP_DIR/usr/bin/"
-cp "$PROJECT_ROOT/xClipper.desktop" "$APP_DIR/usr/share/applications/"
-cp "$PROJECT_ROOT/assets/icon.png" "$APP_DIR/usr/share/icons/hicolor/256x256/apps/xClipper.png"
+cp "$BUILD_DIR/LixClipper" "$APP_DIR/usr/bin/"
+cp "$PROJECT_ROOT/LixClipper.desktop" "$APP_DIR/usr/share/applications/"
+cp "$PROJECT_ROOT/assets/icon.png" "$APP_DIR/usr/share/icons/hicolor/256x256/apps/LixClipper.png"
 
 # 4. Download LinuxDeploy and Qt Plugin
 echo "⬇️  Downloading LinuxDeploy tools..."
@@ -63,10 +63,10 @@ echo "ℹ️  Using qmake at: $QMAKE"
     --plugin qt \
     --output appimage \
     --icon-file "$PROJECT_ROOT/assets/icon.png" \
-    --desktop-file "$PROJECT_ROOT/xClipper.desktop"
+    --desktop-file "$PROJECT_ROOT/LixClipper.desktop"
 
 # Move final AppImage to release folder
-mv xClipper*.AppImage "$RELEASE_DIR/"
+mv LixClipper*.AppImage "$RELEASE_DIR/"
 
 echo ""
 echo "✅ Build Complete!"

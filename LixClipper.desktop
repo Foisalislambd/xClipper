@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=xClipper
+Name=LixClipper
 Comment=Clipboard History Manager by Foisal Islam
-Exec=xClipper
-Icon=xClipper
+Exec=LixClipper
+Icon=LixClipper
 Categories=Utility;
 Terminal=false

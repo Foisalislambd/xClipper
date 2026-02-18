@@ -3,8 +3,8 @@
 # Exit on error
 set -e
 
-APP_NAME="xClipper"
-PKG_NAME="xclipper" # Package names must be lowercase
+APP_NAME="LixClipper"
+PKG_NAME="lixclipper" # Package names must be lowercase
 VERSION="1.0.0"
 ARCH="amd64"
 DEB_NAME="${PKG_NAME}_${VERSION}_${ARCH}"
@@ -39,11 +39,11 @@ cd "$PROJECT_ROOT"
 # 3. Copy Files to Package Structure
 echo "📂 Copying files..."
 cp "$BUILD_DIR/$APP_NAME" "$DEB_DIR/usr/bin/$PKG_NAME"
-cp "$PROJECT_ROOT/xClipper.desktop" "$DEB_DIR/usr/share/applications/"
-cp "$PROJECT_ROOT/assets/icon.png" "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/xClipper.png"
+cp "$PROJECT_ROOT/LixClipper.desktop" "$DEB_DIR/usr/share/applications/"
+cp "$PROJECT_ROOT/assets/icon.png" "$DEB_DIR/usr/share/icons/hicolor/256x256/apps/LixClipper.png"
 
 # Update .desktop file to point to the lowercase binary name and correct icon
-sed -i "s/Exec=xClipper/Exec=$PKG_NAME/g" "$DEB_DIR/usr/share/applications/xClipper.desktop"
+sed -i "s/Exec=LixClipper/Exec=$PKG_NAME/g" "$DEB_DIR/usr/share/applications/LixClipper.desktop"
 
 # 4. Create Control File (Metadata)
 echo "📝 Generating control file..."
@@ -57,7 +57,7 @@ Architecture: $ARCH
 Depends: libc6, libstdc++6, libqt6widgets6 | libqt5widgets5
 Maintainer: Foisal Islam <foisal@example.com>
 Description: A modern clipboard history manager.
- xClipper tracks your clipboard history and allows you to 
+ LixClipper tracks your clipboard history and allows you to 
  access previous clippings easily from the system tray.
 EOF
 

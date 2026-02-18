@@ -1,15 +1,15 @@
-# xClipper
+# LixClipper
 
 ### A Project by **MD Foisal Islam**
 
-**xClipper** is a lightweight, modern clipboard history manager designed for Linux. It runs quietly in the background, keeping track of your copied text so you never lose an important snippet again.
+**LixClipper** is a lightweight, modern clipboard history manager designed for Linux. It runs quietly in the background, keeping track of your copied text so you never lose an important snippet again.
 
 ---
 
 ## 📖 User Guide
 
 ### How it Works
-1.  **Copy as usual**: Whenever you press `Ctrl+C` or copy text from any application, xClipper saves it.
+1.  **Copy as usual**: Whenever you press `Ctrl+C` or copy text from any application, LixClipper saves it.
 2.  **Access History**: Click the **Tray Icon** (computer icon) in your system bar to open the history window.
 3.  **Paste**: Click on any item in the list to copy it back to your clipboard. You can then paste it (`Ctrl+V`) anywhere.
 4.  **Clear**: Use the "Clear all" button to wipe your history.
@@ -25,7 +25,7 @@
 
 ## 🛠️ Installation & Setup
 
-Follow these simple steps to get xClipper running on your Linux machine.
+Follow these simple steps to get LixClipper running on your Linux machine.
 
 ### 1. Install Requirements
 You need a C++ compiler and Qt libraries. Open your terminal and run the command for your OS:
@@ -62,14 +62,14 @@ cmake ..
 make -j$(nproc)
 ```
 
-### 3. Run xClipper
+### 3. Run LixClipper
 Once built, you can start the app directly:
 
 ```bash
-./xClipper
+./LixClipper
 ```
 
-*Tip: You can add this command to your "Startup Applications" to have xClipper start automatically when you log in.*
+*Tip: You can add this command to your "Startup Applications" to have LixClipper start automatically when you log in.*
 
 ---
 
